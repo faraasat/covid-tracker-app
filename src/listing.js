@@ -1,3 +1,9 @@
 export { default as CovidChart } from "./components/CovidChart";
 export { default as CustomGrid } from "./components/CustomGrid";
+export { default as SmallGrid } from "./components/SmallGrid";
 export { default as NavBar } from "./components/NavBar";
+export { default as Spinner } from "./components/Spinner";
+export { default as PrintData } from "./components/PrintData";
+export { default as ShowPercent } from "./components/ShowPercent";
+export { default as LinearProgression } from "./components/LinearProgression";
+export { default as CountrySelector } from "./components/CountrySelector";

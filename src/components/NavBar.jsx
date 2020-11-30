@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
+import { CountrySelector } from "../listing";
+import { Button, Container } from "@material-ui/core";
+import { DataContext } from "../data/dataContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: "flex",
     flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 2,
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       display: "block",
     },
   },
@@ -34,57 +35,75 @@ const useStyles = makeStyles((theme) => ({
       width: "auto",
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  btn: {
+    padding: 10,
   },
-  inputRoot: {
-    color: "inherit",
+  mid: {
+    flexGrow: 2,
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
+  media: {
+    [theme.breakpoints.up("xs")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      flexGrow: 0,
+      minHeight: 130,
+    },
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+      flexDirection: "row",
+      minHeight: 90,
     },
   },
 }));
 
 export default function NavBar() {
+  const [loc, setLoc] = useState({});
+  const [loading, setLoading] = useState(false);
   const classes = useStyles();
+  const { manageCountryData } = useContext(DataContext);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://extreme-ip-lookup.com/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        setLoc(data);
+      });
+    setLoading(false);
+  }, [setLoc]);
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            COVID-19 Tracker App
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+        <Container>
+          <Toolbar className={classes.media}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              COVID-19 Tracker App
+            </Typography>
+            <div className={classes.mid}>
+              {loading ? (
+                <h1>loading...</h1>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.btn}
+                  onClick={() =>
+                    manageCountryData({
+                      iso2: loc.countryCode,
+                      fullUrl: loc.country,
+                    })
+                  }
+                >
+                  Click to Switch to Your Location to {loc.country}
+                </Button>
+              )}
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-        </Toolbar>
+            <div className={classes.search}>
+              <CountrySelector />
+            </div>
+          </Toolbar>
+        </Container>
       </AppBar>
     </div>
   );

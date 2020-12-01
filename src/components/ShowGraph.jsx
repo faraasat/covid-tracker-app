@@ -32,7 +32,13 @@ export default function ShowGraph({ dailyData }) {
     });
   } else {
     resData?.map((data, index) => {
-      idx[index] = index;
+      myDate.setDate(myDate.getDate() + 1);
+      idx[index] =
+        myDate.toDateString().split(" ")[2] +
+        " " +
+        myDate.toDateString().split(" ")[1] +
+        " " +
+        myDate.toDateString().split(" ")[3];
       act[index] = data?.Active;
       conf[index] = data?.Confirmed;
       rec[index] = data?.Recovered;

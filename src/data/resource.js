@@ -1,26 +1,19 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import { DataContext } from "./dataContext";
 
 export default function CreateResource(fetchData) {
   let status = "loading";
   let result;
-  let url;
+  let prevState;
   let { data } = useContext(DataContext);
-  if (typeof data != "undefined") {
-    url = `/countries/${data.iso2}`;
-  }
 
-  let suspender = fetchData(url);
+  let suspender = fetchData(data);
 
   suspender
     .then((data) => {
       status = "success";
-      result = {
-        confirmed: data?.confirmed?.value,
-        recovered: data?.recovered?.value,
-        deaths: data?.deaths?.value,
-        lastUpdate: data?.lastUpdate,
-      };
+      result = data;
     })
     .catch((error) => {
       status = "error";
@@ -32,8 +25,15 @@ export default function CreateResource(fetchData) {
       if (status === "loading") {
         throw suspender;
       } else if (status === "error") {
-        throw result;
+        // console.log(result);
+        toast.error(result.error.messages, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 5000,
+        });
+        toast.clearWaitingQueue();
+        return prevState;
       } else if (status === "success") {
+        prevState = result;
         return result;
       }
     },

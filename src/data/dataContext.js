@@ -13,8 +13,8 @@ export function DataContextProvider({ children }) {
     dispatch({
       type: MANAGE_COUNTRY_DATA,
       payload: {
-        iso2: dataObj.iso2,
-        fullUrl: dataObj.fullUrl,
+        iso2: dataObj?.iso2,
+        fullUrl: dataObj?.fullUrl,
       },
     });
   }

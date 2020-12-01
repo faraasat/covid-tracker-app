@@ -2,9 +2,9 @@ import { Typography } from "@material-ui/core";
 import CountUp from "react-countup";
 
 export default function PrintData({ resource, classes, val }) {
-  const { confirmed, recovered, deaths, lastUpdate } = resource.readData();
-  let date = new Date(lastUpdate?.split("T")[0]).toDateString();
-  const time = new Date(lastUpdate).toTimeString("hh:mm:ss");
+  const data = resource.readData();
+  let date = new Date(data?.lastUpdate?.split("T")[0]).toDateString();
+  const time = new Date(data?.lastUpdate).toTimeString("hh:mm:ss");
   let fullTime = time.split(" ")[0];
   let gmt = time.split(" ")[1];
   if (fullTime === "Invalid" || date === "Invalid" || gmt === "Invalid") {
@@ -19,10 +19,10 @@ export default function PrintData({ resource, classes, val }) {
           start={0}
           end={
             val === "confirmed"
-              ? confirmed
+              ? data?.confirmed?.value
               : val === "Recovered"
-              ? recovered
-              : deaths
+              ? data?.recovered?.value
+              : data?.deaths?.value
           }
           duration={2.5}
           separator=","

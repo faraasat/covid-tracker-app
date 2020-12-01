@@ -7,3 +7,5 @@ export { default as PrintData } from "./components/PrintData";
 export { default as ShowPercent } from "./components/ShowPercent";
 export { default as LinearProgression } from "./components/LinearProgression";
 export { default as CountrySelector } from "./components/CountrySelector";
+export { default as ShowGraph } from "./components/ShowGraph";
+export { default as AnimatedLoader } from "./components/AnimatedLoader";

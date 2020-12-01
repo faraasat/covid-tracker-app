@@ -5,10 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DataContextProvider } from "./data/dataContext";
 
+// Functionality to show Loader when DOM is Loading
+const loader = document.querySelector(".loader");
+const showLoader = () => loader.classList.remove("loader--hide");
+const hideLoader = () => loader.classList.add("loader--hide");
+
 ReactDOM.render(
   <React.StrictMode>
     <DataContextProvider>
-      <App />
+      <App hideLoader={hideLoader} showLoader={showLoader} />
     </DataContextProvider>
   </React.StrictMode>,
   document.getElementById("root")

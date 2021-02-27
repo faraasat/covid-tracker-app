@@ -24,6 +24,6 @@
 ### 📷 Project UI:
 <p align="center">
   <a href="http://locate-covid.surge.sh/">
-    <img src="screen-shot.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='65%' src="screen-shot.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>

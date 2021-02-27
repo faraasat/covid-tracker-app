@@ -1,5 +1,5 @@
 # 👨‍💻 Covid Tracker App.
-## 📽 A project based on Panacloud React Bootcamp.
+## 📽 A project based on Panacloud React Bootcamp [Project 2].
 
 ### ⚒ Project Demo:
 ####  For Project Demo Follow the Link: http://locate-covid.surge.sh/

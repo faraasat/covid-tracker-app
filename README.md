@@ -5,14 +5,15 @@
 ####  For Project Demo Follow the Link: http://locate-covid.surge.sh/
 
 ### 🕵️‍♂️ Project Details:
-####  This project is based on primarily on React as well as uses other libraries too!
+####  This project is based on primarily on React as well as uses other libraries too! This App shows the covid data with graph for majority of countries!
 
 ### ⚙ Technical Details:
-#### In this project React is used for the project. Other Libraries used includes Material-UI, ChartJS, LoaderCss, React-ChartJS-2, React-Country-Flag, React-Countup, React-Geolocated, React-Loaders, React-Select-Country, React-Spinner and React-Toastify. 
+#### In this project, React with Context API, React Hooks and React Suspense is used for the project. Other Libraries used includes Material-UI, ChartJS, LoaderCss, React-ChartJS-2, React-Country-Flag, React-Countup, React-Geolocated, React-Loaders, React-Select-Country, React-Spinner and React-Toastify. 
 
 ### 🤹‍♂️ Skill:
 ![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-333333?style=for-the-badge&logo=visual-studio-code)&nbsp;&nbsp;&nbsp;&nbsp;
 ![React](https://img.shields.io/badge/-React-333333?style=for-the-badge&logo=react)&nbsp;&nbsp;&nbsp;&nbsp;
+![Material UI](https://img.shields.io/badge/-Material%20UI-333333?style=for-the-badge&logo=material-ui)&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### ✔ Contributers:
 <p align="center">

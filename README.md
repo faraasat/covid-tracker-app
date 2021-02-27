@@ -24,6 +24,6 @@
 ### 📷 Project UI:
 <p align="center">
   <a href="http://locate-covid.surge.sh/">
-    <img height="28em" src="https://github.com/faraasat/covid-tracker-app/screen-shot.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img src="screen-shot.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>

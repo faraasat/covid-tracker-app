@@ -1,18 +1,22 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import { useContext, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+
 import { DataContext } from "./data/dataContext";
 import { fetchDailyData, fetchData } from "./data/dataFunctions";
 import CreateResource from "./data/resource";
 import { NavBar, CustomGrid, CovidChart, SmallGrid } from "./listing";
 
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+
 function App({ hideLoader, showLoader }) {
   let resource = CreateResource(fetchData);
   let dailyData = CreateResource(fetchDailyData);
   let { data } = useContext(DataContext);
+
   let countryName;
+
   if (
     typeof data == "undefined" ||
     ((data.iso2 === null || "") && (data.fullUrl === null || ""))

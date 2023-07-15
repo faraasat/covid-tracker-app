@@ -84,19 +84,23 @@ export default function NavBar() {
               {loading ? (
                 <h1>loading...</h1>
               ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.btn}
-                  onClick={() =>
-                    manageCountryData({
-                      iso2: loc.countryCode,
-                      fullUrl: loc.country,
-                    })
-                  }
-                >
-                  Click to Switch to Your Location to {loc.country}
-                </Button>
+                <>
+                  {loc.country && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.btn}
+                      onClick={() =>
+                        manageCountryData({
+                          iso2: loc.countryCode,
+                          fullUrl: loc.country,
+                        })
+                      }
+                    >
+                      Click to Switch to Your Location to {loc.country}
+                    </Button>
+                  )}
+                </>
               )}
             </div>
             <div className={classes.search}>

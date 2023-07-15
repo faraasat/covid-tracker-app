@@ -14,18 +14,21 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.1.2
       with:
-        version: 12
+        version: 18
 
-    - name: GitHub Action for Yarn
-      uses: Borales/actions-yarn@v2.3.0
-      with:
-        cmd: install
+    # - name: GitHub Action for Yarn
+    #   uses: Borales/actions-yarn@v2.3.0
+    #   with:
+    #     cmd: install
 
+    - name: Installing Dependencies
+      run: npm install --legacy-peer-deps
+        
     - name: Creating Build
       run: npm run build
-      
+    
     - name: Installing Surge
       run: npm install -g surge
       
     - name: Deploying on Surge
-      run: surge ./build http://locate-covid.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./build https://locate-covid.surge.sh/ --token ${{secrets.SURGE_TOKEN}}

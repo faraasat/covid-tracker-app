@@ -38,7 +38,7 @@ export default function CovidChart({ dailyData }) {
           />
         }
       >
-        <ShowGraph dailyData={dailyData} />
+        <ShowGraph dailyData={dailyData || []} />
       </Suspense>
     </div>
   );

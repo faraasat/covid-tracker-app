@@ -5,14 +5,11 @@ export default function ShowPercent({ resource, val }) {
   const data = resource.readData();
   const res =
     val === "active"
-      ? ((data?.confirmed?.value -
-          data?.recovered?.value -
-          data?.deaths?.value) /
-          data?.confirmed?.value) *
+      ? ((data?.confirmed - data?.recovered - data?.deaths) / data?.confirmed) *
         100
       : val === "perRecover"
-      ? (data?.recovered?.value / data?.confirmed?.value) * 100
-      : (data?.deaths?.value / data?.confirmed?.value) * 100;
+      ? (data?.recovered / data?.confirmed) * 100
+      : (data?.deaths / data?.confirmed) * 100;
 
   return (
     <Typography
@@ -23,7 +20,16 @@ export default function ShowPercent({ resource, val }) {
         letterSpacing: 2,
       }}
     >
-      <CountUp start={0.0} duration={2.75} end={Math.round(res)} decimal="." />
+      {res && res !== 0 ? (
+        <CountUp
+          start={0.0}
+          duration={2.75}
+          end={Math.round(res)}
+          decimal="."
+        />
+      ) : (
+        0
+      )}
       &nbsp;%
     </Typography>
   );

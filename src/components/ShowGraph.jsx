@@ -1,7 +1,10 @@
 import { Line } from "react-chartjs-2";
 
 export default function ShowGraph({ dailyData }) {
-  const { resData, data } = dailyData?.readData();
+  const { resData, data } = dailyData?.readData() || {
+    resData: [],
+    data: "None",
+  };
 
   let idx = [],
     act = [],

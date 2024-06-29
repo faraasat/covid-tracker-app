@@ -51,10 +51,10 @@ function App({ hideLoader, showLoader }) {
         {countryName}&nbsp;&nbsp;&nbsp;&nbsp;Corona&nbsp;&nbsp;Report
       </Typography>
       <Container style={{ marginTop: 20 }}>
-        <CustomGrid resource={resource} />
-        <SmallGrid resource={resource} />
+        <CustomGrid resource={resource || []} />
+        <SmallGrid resource={resource || []} />
         <Box>
-          <CovidChart dailyData={dailyData} />
+          <CovidChart dailyData={dailyData || []} />
         </Box>
       </Container>
       <div>

@@ -3,8 +3,8 @@ import CountUp from "react-countup";
 
 export default function PrintData({ resource, classes, val }) {
   const data = resource.readData();
-  let date = new Date(data?.lastUpdate?.split("T")[0]).toDateString();
-  const time = new Date(data?.lastUpdate).toTimeString("hh:mm:ss");
+  let date = new Date(data?.last_update?.split("T")[0]).toDateString();
+  const time = new Date(data?.last_update).toTimeString("hh:mm:ss");
   let fullTime = time.split(" ")[0];
   let gmt = time.split(" ")[1];
   if (fullTime === "Invalid" || date === "Invalid" || gmt === "Invalid") {
@@ -19,10 +19,10 @@ export default function PrintData({ resource, classes, val }) {
           start={0}
           end={
             val === "confirmed"
-              ? data?.confirmed?.value
+              ? data?.confirmed
               : val === "Recovered"
-              ? data?.recovered?.value
-              : data?.deaths?.value
+              ? data?.recovered
+              : data?.deaths
           }
           duration={2.5}
           separator=","

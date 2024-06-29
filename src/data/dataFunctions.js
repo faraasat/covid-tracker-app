@@ -45,8 +45,6 @@ export const fetchDailyData = async (data) => {
     fUrl = url2 + `/country/${data?.iso2}`;
   }
   try {
-    const d =await fetch("https://covid-api.com/api/reports/total")
-    // console.log(await d.json());
     const response = await fetch(fUrl);
     if (response.status === "404" || !response.ok) {
       throw Error;
